@@ -11,5 +11,10 @@ RSpec.describe Category, type: :model do
     it "should be invalid if empty" do
       expect(build(:category, name:'')).to be_invalid
     end
+
+    it "should be invalid if repeated" do
+      create(:category, name:'Memes')
+      expect(build(:category, name:'Memes')).to be_invalid
+    end
   end
 end

@@ -10,6 +10,7 @@ RSpec.describe Category, type: :model do
   context "Testing name" do
     it "should be invalid if empty" do
       expect(build(:category, name:'')).to be_invalid
+      expect(build(:category, name: nil)).to be_invalid
     end
 
     it "should be invalid if repeated" do

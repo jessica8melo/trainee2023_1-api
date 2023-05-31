@@ -1,6 +1,10 @@
 FactoryBot.define do
+  sequence :category_name do |n|
+    "Category #{n}"
+  end
+
   factory :category do
-    name { "MyString" }
+    name { generate(:category_name) }
     description { "MyText" }
   end
 end

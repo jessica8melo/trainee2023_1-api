@@ -35,7 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_004840) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "username_id"
   end
 
   add_foreign_key "post_categories", "categories"

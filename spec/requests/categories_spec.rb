@@ -86,6 +86,10 @@ RSpec.describe "Categories", type: :request do
         expect(JSON.parse(response.body)["id"]).to eq(category.id)
       end
 
+      it "should have all attributes" do
+        expect(JSON.parse(response.body).keys).to contain_exactly("id", "name", "description", "created_at", "updated_at")
+      end
+
       it "should return status ok" do
         expect(response).to have_http_status(:ok)
       end

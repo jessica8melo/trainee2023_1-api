@@ -1,10 +1,4 @@
 class CategoriesController < ApplicationController
-    # create    CREATE
-    # index     READ
-    # show      READ
-    # delete    DELETE
-    # update    UPDATE
-
     def index
         should_paginate = !index_pagination_params[:per_page].nil? || !index_pagination_params[:page].nil?
 

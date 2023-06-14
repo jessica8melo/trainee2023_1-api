@@ -21,3 +21,7 @@ Post.create(title: "post de comedia e de anime", content: "conteudo de comedia e
 PostCategory.create(post_id: 2, category_id: 2)
 PostCategory.create(post_id: 2, category_id: 3)
 Post.create(title: "post do dia a dia", content: "conteudo de dia a dia", user_id: 1)
+PostCategory.create(post_id: 3, category_id: 4)
+Post.create(title: "post do dia a dia e de comedia", content: "conteudo de dia a dia e de comedia", user_id: 1)
+PostCategory.create(post_id: 4, category_id: 2)
+PostCategory.create(post_id: 4, category_id: 4)

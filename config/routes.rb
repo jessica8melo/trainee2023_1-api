@@ -36,6 +36,10 @@ Rails.application.routes.draw do
 
     scope 'users' do
       get 'login', to: 'users#login'
+      get 'show', to: 'users#show'
+      post 'create', to: 'users#create'
+      patch 'update', to: 'users#update'
+      delete 'delete', to: 'users#delete'
     end
 
   end

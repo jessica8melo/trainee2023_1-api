@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
-        render json: user, status: :ok
+        render json: serializer(user), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
     end
@@ -47,6 +47,10 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:name, :email, :password, profile_pictures:[])
+    end
+
+    def serializer(user)
+        UserSerializer.new.serialize_to_json(user)
     end
 end

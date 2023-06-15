@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :commentaries
   has_many :feedbacks
+
+  has_many_attached :profile_pictures
   
   private
   def set_defaults

@@ -11,7 +11,7 @@ Category.create(name: "Comedia")
 Category.create(name: "Anime")
 Category.create(name: "Dia a dia")
 
-User.create(name: "admin", email: "admin@admin", password: "senha1", is_admin: true)
+User.create(name: "admin", email: "admin@admin", password: "senha1", is_admin: true).profile_pictures.attach(io: File.open('./public/user1.jpeg'), filename:('user1.jpeg'))
 User.create(name: "jessica", email: "jessica@struct", password: "senha1")
 User.create(name: "paulo", email: "paulo@struct", password: "senha1")
 
@@ -25,3 +25,5 @@ PostCategory.create(post_id: 3, category_id: 4)
 Post.create(title: "post do dia a dia e de comedia", content: "conteudo de dia a dia e de comedia", user_id: 1)
 PostCategory.create(post_id: 4, category_id: 2)
 PostCategory.create(post_id: 4, category_id: 4)
+
+User.find(1).profile_pictures.attach(io: File.open('./public/user2.jpg'), filename:('user2.jpg'))

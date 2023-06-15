@@ -46,6 +46,10 @@ group :development do
   # gem "spring"
 end
 
+# for user model
+gem 'devise'
+gem 'simple_token_authentication'
+
 # Database credentials:
 gem 'figaro'
 

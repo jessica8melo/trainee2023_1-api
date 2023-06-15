@@ -1,38 +1,43 @@
 class CategoriesController < ApplicationController
-    # create    CREATE
-    # index     READ
-    # show      READ
-    # delete    DELETE
-    # update    UPDATE
-
     def index
-        should_paginate = !index_pagination_params[:per_page].nil? || !index_pagination_params[:page].nil?
-
-        if should_paginate
-            per_page = index_pagination_params[:per_page].to_i || 10
-            page = index_pagination_params[:page].to_i || 1
-            offset = per_page * (page-1)
-            cats = Category.all.limit(per_page).offset(offset)
-        else
-            cats = Category.all
-        end
-
+        cats = Category.all
         render json: cats, status: :ok
     end
 
     def show
         cat = Category.find(params[:id])
         render json: cat, status: :ok
-    rescue StandardError
-        render json: { message: "Not Found." }, status: :not_found
+    rescue StandardError => e
+        render json: e, status: :not_found
+    end
+
+    def create
+        cat = Category.new(cat_params)
+        cat.save!
+        render json: cat, status: :ok
+    rescue StandardError => e
+        render json: e, status: :unprocessable_entity
+    end
+
+    def update
+        cat = Category.find(params[:id])
+        cat.update!(cat_params)
+        render json: cat, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
+    def delete
+        cat = Category.find(params[:id])
+        cat.destroy!
+        render json: {message: "Destroyed object."}, status: :ok
+    rescue StandardError => e
+        render json: e, status: :not_found
     end
 
     private
 
-    def index_pagination_params
-        params.permit(
-            :page,
-            :per_page
-        )
+    def cat_params
+        params.require(:category).permit(:name, :description)
     end
 end

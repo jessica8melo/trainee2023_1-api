@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PostCategory, type: :model do
   let(:category) { create(:category) }
-  let(:post) { create(:post) }
+  let(:user) { create(:user, email:'teste@teste', password:'123@46', name:'teste') }
+  let(:post) { create(:post, user: user) }
   
   context 'Testing factory' do
     it 'should be valid' do

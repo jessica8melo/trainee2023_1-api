@@ -64,7 +64,6 @@ RSpec.describe "Posts", type: :request do
       'X-User-Email': user.email,
       'X-User-Token': user.authentication_token
     }}
-    # let(:post) {create(:post, user:user)}
     let(:post_params) do
       attributes_for(:post, user_id: user.id)
     end
